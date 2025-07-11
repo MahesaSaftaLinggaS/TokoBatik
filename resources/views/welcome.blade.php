@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Toko Batik</title>
+        <title>Bunga Batik</title>
         <link rel="stylesheet" href="/build/assets/app-CuImFTX2.css">
 <script src="/build/assets/app-CbVi_I5T.js" defer></script>
 
