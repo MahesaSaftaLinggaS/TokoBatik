@@ -5,10 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Toko Batik</title>
-        @vite('resources/css/app.css')
-        @vite('resources/js/app.js')
-        <link rel="stylesheet" href="{{ asset('build/assets/app-CulmFTX2.css') }}">
-<script src="{{ asset('build/assets/app-Cbvi_I5T.js') }}" defer></script>
+        <link rel="stylesheet" href="/build/assets/app-CulmFTX2.css">
+<script src="/build/assets/app-Cbvi_I5T.js" defer></script>
+        
     </head>
     <body>
         <livewire:header />
