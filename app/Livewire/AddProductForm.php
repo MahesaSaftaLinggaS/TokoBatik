@@ -5,15 +5,12 @@ namespace App\Livewire;
 use App\Models\Category;
 use App\Models\Product;
 use Livewire\Component;
-use Livewire\Attributes\Validate;
-use Livewire\Features\SupportFileUploads\WithFileUploads;
 
 class AddProductForm extends Component
 {
-    use WithFileUploads;
     public $currentUrl;
     public $product_name = '';
-    public $photo;
+    public $photo = ''; // now a string for image URL
     public $product_description = '';
     public $product_price = '';
 
@@ -28,17 +25,15 @@ class AddProductForm extends Component
     public function save(){
         $this->validate([
             'product_name' => 'required',
-            'photo' => 'image|required|mimes:jpg,png|max:1024',
+            'photo' => 'required|url',
             'product_description' => 'required',
             'product_price' => 'required|numeric',
             'category_id' => 'required',
         ]);
 
-        $path = $this->photo->store('public/photos');
-
         $product = new Product();
         $product->name = $this->product_name;
-        $product->image = $path;
+        $product->image = $this->photo; // store image URL directly
         $product->description = $this->product_description;
         $product->price = $this->product_price;
         $product->category_id = $this->category_id;
@@ -53,7 +48,6 @@ class AddProductForm extends Component
         
         $this->currentUrl = $explode_url[3].' '.($explode_url[4] ?? '');
 
-        return view('livewire.add-product-form')
-        ->layout('admin-layout');
+        return view('livewire.add-product-form');
     }
 }
