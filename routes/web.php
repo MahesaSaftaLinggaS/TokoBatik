@@ -51,13 +51,3 @@ Route::group(['middleware' => 'admin'], function(){
     //editing products
     Route::get('/edit/{id}/product', EditProduct::class);
 });
-
-
-Route::get('/run-migrate', function () {
-    if (request()->get('secret') !== 'batik123') {
-        abort(403); // agar tidak bisa sembarangan dipakai
-    }
-
-    Artisan::call('migrate:fresh --seed');
-    return '✅ Migrasi dan seeding berhasil!';
-});
