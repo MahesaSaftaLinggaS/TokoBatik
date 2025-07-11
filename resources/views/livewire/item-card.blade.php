@@ -3,7 +3,7 @@
     
     <!-- Gambar Produk -->
     <img 
-      src="{{ $product->image ? Storage::url($product->image) : asset('images/placeholder-image.jpg') }}" 
+      src="{{ $product->image ?? asset('images/placeholder-image.jpg') }}" 
       alt="product-images" 
       class="h-[180px] w-full object-cover"
     >
