@@ -80,7 +80,7 @@
 					@if ($photo) 
 						<img src="{{ $photo->temporaryUrl() }}" alt="Product image" height="300px" width="300px" class="rounded-lg">
 					@else
-						<img src="{{ asset('images/placeholder-image.jpg')}}" alt="default image" height="300px" width="300px" class="rounded-lg">
+						<img src="{{ secure_asset('images/placeholder-image.jpg')}}" alt="default image" height="300px" width="300px" class="rounded-lg">
 					@endif
 					</div>
                     <!-- End Col -->
