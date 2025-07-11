@@ -78,7 +78,7 @@
 
                     <div class="sm:col-span-9">
                         @if ($photo && is_string($photo))
-                            <img src="{{ Storage::url($photo) }}" alt="Product image" height="300px" width="300px" class="rounded-lg">
+                            <img src="{{ $photo }}" alt="Product image" height="300px" width="300px" class="rounded-lg">
                         @elseif ($photo)
                             <img src="{{ $photo->temporaryUrl() }}" alt="Product image" height="300px" width="300px" class="rounded-lg">
                         @else
