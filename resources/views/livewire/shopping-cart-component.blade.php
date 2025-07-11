@@ -9,7 +9,7 @@
       @foreach($cartItems as $item)
         <div class="bg-white p-4 rounded-lg shadow-sm">
           <div class="flex flex-col items-center sm:flex-row sm:items-start sm:gap-6">
-            <img src="{{ Storage::url($item->product->image) }}" alt="Product Image"
+            <img src="{{ $item->product->image ?? asset('images/placeholder-image.jpg') }}" alt="Product Image"
               class="w-32 h-32 rounded object-cover" />
 
             <div class="mt-4 sm:mt-0 w-full text-center sm:text-left">

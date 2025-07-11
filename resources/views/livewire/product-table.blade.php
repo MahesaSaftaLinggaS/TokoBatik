@@ -74,7 +74,7 @@
 								  <a wire:navigate href="">
 									  <div class="flex items-center gap-x-3">
 									  
-										  <img class="inline-block size-[38px] rounded-full" src="{{ Storage::url($product->image)}}" alt="Avatar">
+										  <img class="inline-block size-[38px] rounded-full" src="{{ $product->image ?? asset('images/placeholder-image.jpg') }}" alt="Avatar">
 										  <div class="grow">
 											  <span class="block text-sm font-semibold text-gray-800 dark:text-neutral-200">{{str($product->name)->words(3)}}</span>
 										  </div>
