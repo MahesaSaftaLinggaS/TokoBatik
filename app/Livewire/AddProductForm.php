@@ -26,26 +26,28 @@ class AddProductForm extends Component
     }
     
     public function save(){
-        $this->validate([
-            'product_name' => 'required',
-            'photo' => 'image|required|mimes:jpg,png|max:1024',
-            'product_description' => 'required',
-            'product_price' => 'required|numeric',
-            'category_id' => 'required',
-        ]);
+    $this->validate([
+        'product_name' => 'required',
+        'photo' => 'image|required|mimes:jpg,jpeg,png|max:1024',
+        'product_description' => 'required',
+        'product_price' => 'required|numeric',
+        'category_id' => 'required',
+    ]);
 
-        $path = $this->photo->store('public/photos');
+    // Simpan file ke storage/app/public/photos
+    $path = $this->photo->store('photos', 'public');
 
-        $product = new Product();
-        $product->name = $this->product_name;
-        $product->image = $path;
-        $product->description = $this->product_description;
-        $product->price = $this->product_price;
-        $product->category_id = $this->category_id;
-        $product->save();
+    $product = new Product();
+    $product->name = $this->product_name;
+    $product->image = $path; // contoh: photos/namafile.jpg
+    $product->description = $this->product_description;
+    $product->price = $this->product_price;
+    $product->category_id = $this->category_id;
+    $product->save();
 
-        return $this->redirect('/products', navigate: true);
-    }
+    return $this->redirect('/products', navigate: true);
+}
+
     public function render()
     {
         $current_url = url()->current();
