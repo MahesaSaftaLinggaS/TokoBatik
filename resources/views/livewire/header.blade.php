@@ -16,6 +16,29 @@
         <a href="/all/products" wire:navigate class="block md:inline-block transition hover:text-gray-700 {{ Request::is('all/products') ? 'text-gray-700 font-bold' : 'text-gray-500' }}">Cari Lebih Banyak</a>
         <a href="/about" wire:navigate class="block md:inline-block transition hover:text-gray-700 {{ Request::is('about') ? 'text-gray-700 font-bold' : 'text-gray-500' }}">Tentang kami</a>
         <a href="/contacts" wire:navigate class="block md:inline-block transition hover:text-gray-700 {{ Request::is('contacts') ? 'text-gray-700 font-bold' : 'text-gray-500' }}">Kontak kami</a>
+
+        <!-- Mobile Login/Logout -->
+        <div class="block md:hidden mt-4 border-t border-gray-200 pt-4 dark:border-neutral-700">
+          @if (auth()->check())
+            <livewire:shopping-cart-icon />
+            <a href="/admin/dashboard" class="block rounded-md bg-gray-600 px-5 py-2.5 text-sm font-medium text-gray-200 hover:bg-gray-700 transition mb-2">
+              Admin Dashboard
+            </a>
+            <form method="POST" action="/auth/logout" class="inline-block w-full">
+              @csrf
+              <button type="submit" class="w-full text-left hover:text-red-700 transition flex items-center px-5 py-2.5">
+                <svg class="h-6 w-6 mr-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2h4a2 2 0 012 2v1"></path>
+                </svg>
+                <span>Logout</span>
+              </button>
+            </form>
+          @else
+            <a href="/auth/login" class="block rounded-md bg-blue-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700 transition">
+              Login
+            </a>
+          @endif
+        </div>
       </nav>
 
       <!-- Right Actions -->
