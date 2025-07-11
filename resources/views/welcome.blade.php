@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Toko Batik</title>
-       <link rel="stylesheet" href="{{ asset('build/assets/app-CuImFTX2.css') }}">
-        <script src="{{ asset('build/assets/app-CbVi_I5T.js') }}" defer></script>
+        <link rel="stylesheet" href="{{ asset('build/assets/app-CuImFTX2.css') }}">
+    <script src="{{ asset('build/assets/app-CbVi_I5T.js') }}" defer></script>
     </head>
     <body>
         <livewire:header />
