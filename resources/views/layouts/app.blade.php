@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ $title ?? 'My E-commerce Site' }}</title>
     @livewireStyles
-    <link href="{{ asset('build/assets/app-CuImFTX2.css') }}" rel="stylesheet">
-<script src="{{ asset('build/assets/app-CbVi_I5T.js') }}" defer></script>
-
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
     <header class="bg-white shadow p-4">
