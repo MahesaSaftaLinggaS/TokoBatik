@@ -49,9 +49,25 @@ class AddProductForm extends Component
             $product->save();
 
             return $this->redirect('/products', navigate: true);
+
         } catch (\Exception $e) {
-            Log::error('Upload Error: '.$e->getMessage());
-            dd('Upload error: '.$e->getMessage());
+            Log::error('Upload Error: '.$e->getMessage(), [
+                'photo_info' => [
+                    'exists' => isset($this->photo),
+                    'type' => gettype($this->photo),
+                    'class' => get_class($this->photo),
+                    'extension' => optional($this->photo)->getClientOriginalExtension(),
+                    'mimeType' => optional($this->photo)->getMimeType(),
+                    'size' => optional($this->photo)->getSize(),
+                    'originalName' => optional($this->photo)->getClientOriginalName(),
+                ]
+            ]);
+
+            dd([
+                'message' => $e->getMessage(),
+                'mime' => optional($this->photo)->getMimeType(),
+                'ext' => optional($this->photo)->getClientOriginalExtension()
+            ]);
         }
     }
 
@@ -60,7 +76,7 @@ class AddProductForm extends Component
         $current_url = url()->current();
         $explode_url = explode('/', $current_url);
 
-        $this->currentUrl = $explode_url[3] . ' ' . $explode_url[4];
+        $this->currentUrl = $explode_url[3] . ' ' . ($explode_url[4] ?? '');
 
         return view('livewire.add-product-form')
             ->layout('admin-layout');
