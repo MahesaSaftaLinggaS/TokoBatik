@@ -56,43 +56,47 @@
                         <label class="text-sm font-medium text-gray-500 mt-2.5 dark:text-neutral-500">Gambar Produk</label>
                     </div>
                     <div class="sm:col-span-9" wire:ignore>
-                        <div 
-                            x-data="{
-                                uploading: false,
-                                progress: 0,
-                                imageUrl: '',
-                                async uploadImage(event) {
-                                    const file = event.target.files[0];
-                                    if (!file) return;
+    <div 
+        x-data="{
+            uploading: false,
+            imageUrl: '',
+            async uploadImage(event) {
+                const file = event.target.files[0];
+                if (!file) return;
 
-                                    this.uploading = true;
-                                    const formData = new FormData();
-                                    formData.append('file', file);
-                                    formData.append('upload_preset', 'unsigned'); // preset kamu
-                                    try {
-                                        const res = await fetch('https://api.cloudinary.com/v1_1/dpcwujbqs/image/upload', {
-                                            method: 'POST',
-                                            body: formData
-                                        });
-                                        const data = await res.json();
-                                        this.imageUrl = data.secure_url;
-                                        @this.set('photo', data.secure_url);
-                                    } catch (e) {
-                                        alert('Upload gagal!');
-                                        console.error(e);
-                                    } finally {
-                                        this.uploading = false;
-                                    }
-                                }
-                            }"
-                        >
-                            <input type="file" @change="uploadImage($event)" accept="image/*" class="w-full border rounded-lg text-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
-                            <div x-show="uploading" class="text-blue-500 mt-2 text-sm">Uploading...</div>
-                            <template x-if="imageUrl">
-                                <img :src="imageUrl" class="rounded mt-2" width="200">
-                            </template>
-                        </div>
-                    </div>
+                this.uploading = true;
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('upload_preset', 'https://res.cloudinary.com/dpcwujbqs/image/upload/v1752245812/bati.jpeg_diqsyh.jpg'); // GANTI DENGAN PUNYA KAMU
+                try {
+                    const res = await fetch('https://api.cloudinary.com/v1_1/dpcwujbqs/image/upload', {
+
+                        method: 'POST',
+                        body: formData
+                    });
+                    const data = await res.json();
+                    this.imageUrl = data.secure_url;
+
+                    // Kirim ke Livewire
+                    window.livewire.find('{{ $this->id }}').set('photo', data.secure_url);
+
+                } catch (e) {
+                    alert('Upload gagal!');
+                    console.error(e);
+                } finally {
+                    this.uploading = false;
+                }
+            }
+        }"
+    >
+        <input type="file" @change="uploadImage($event)" accept="image/*" class="w-full border rounded-lg text-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+        <div x-show="uploading" class="text-blue-500 mt-2 text-sm">Uploading...</div>
+        <template x-if="imageUrl">
+            <img :src="imageUrl" class="rounded mt-2" width="200">
+        </template>
+    </div>
+</div>
+
 
                     <div class="sm:col-span-3">
                         <label class="text-sm font-medium text-gray-500 mt-2.5 dark:text-neutral-500">Deskripsi Produk</label>
