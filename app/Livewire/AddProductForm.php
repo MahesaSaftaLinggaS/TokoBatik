@@ -51,7 +51,7 @@ class AddProductForm extends Component
         $current_url = url()->current();
         $explode_url = explode('/',$current_url);
         
-        $this->currentUrl = $explode_url[3].' '.$explode_url[4];
+        $this->currentUrl = $explode_url[3].' '.($explode_url[4] ?? '');
 
         return view('livewire.add-product-form')
         ->layout('admin-layout');
