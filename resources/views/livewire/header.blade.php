@@ -1,4 +1,4 @@
-<header class="bg-white shadow-sm">
+<header x-data="{ open: false }" class="bg-white shadow-sm">
   <div class="mx-auto max-w-screen-xl px-4 md:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       <!-- Logo & Brand -->
@@ -11,11 +11,11 @@
       </a>
 
       <!-- Navigation -->
-      <nav class="hidden md:flex gap-6 items-center text-sm">
-        <a href="/" wire:navigate class="transition hover:text-gray-700 {{ Request::is('/') ? 'text-gray-700 font-bold' : 'text-gray-500' }}">Home</a>
-        <a href="/all/products" wire:navigate class="transition hover:text-gray-700 {{ Request::is('all/products') ? 'text-gray-700 font-bold' : 'text-gray-500' }}">Cari Lebih Banyak</a>
-        <a href="/about" wire:navigate class="transition hover:text-gray-700 {{ Request::is('about') ? 'text-gray-700 font-bold' : 'text-gray-500' }}">Tentang kami</a>
-        <a href="/contacts" wire:navigate class="transition hover:text-gray-700 {{ Request::is('contacts') ? 'text-gray-700 font-bold' : 'text-gray-500' }}">Kontak kami</a>
+      <nav :class="{'block': open, 'hidden': !open}" class="hidden md:flex gap-6 items-center text-sm absolute md:static top-16 left-0 w-full md:w-auto bg-white md:bg-transparent z-50 md:z-auto px-4 md:px-0 py-4 md:py-0 border-t md:border-0 border-gray-200 md:dark:border-transparent dark:bg-neutral-900 md:dark:bg-transparent">
+        <a href="/" wire:navigate class="block md:inline-block transition hover:text-gray-700 {{ Request::is('/') ? 'text-gray-700 font-bold' : 'text-gray-500' }}">Home</a>
+        <a href="/all/products" wire:navigate class="block md:inline-block transition hover:text-gray-700 {{ Request::is('all/products') ? 'text-gray-700 font-bold' : 'text-gray-500' }}">Cari Lebih Banyak</a>
+        <a href="/about" wire:navigate class="block md:inline-block transition hover:text-gray-700 {{ Request::is('about') ? 'text-gray-700 font-bold' : 'text-gray-500' }}">Tentang kami</a>
+        <a href="/contacts" wire:navigate class="block md:inline-block transition hover:text-gray-700 {{ Request::is('contacts') ? 'text-gray-700 font-bold' : 'text-gray-500' }}">Kontak kami</a>
       </nav>
 
       <!-- Right Actions -->
@@ -43,7 +43,7 @@
         </div>
 
         <!-- Mobile Menu Toggle -->
-        <button class="md:hidden rounded p-2 text-gray-600 hover:text-gray-800 transition">
+        <button @click="open = !open" class="md:hidden rounded p-2 text-gray-600 hover:text-gray-800 transition">
           <span class="sr-only">Toggle menu</span>
           <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
