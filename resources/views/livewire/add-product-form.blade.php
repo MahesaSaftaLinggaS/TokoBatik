@@ -78,7 +78,7 @@
                     this.imageUrl = data.secure_url;
 
                     // Kirim ke Livewire
-                    window.livewire.find('{{ $this->id }}').set('photo', data.secure_url);
+window.livewire.find('{{ $id }}').set('photo', data.secure_url);
 
                 } catch (e) {
                     alert('Upload gagal!');
