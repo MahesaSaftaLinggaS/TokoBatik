@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ $title ?? 'My E-commerce Site' }}</title>
     @livewireStyles
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
