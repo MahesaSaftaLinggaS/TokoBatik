@@ -79,6 +79,7 @@
                     <div class="sm:col-span-9">
                     <input type="text" wire:model="photo" placeholder="Enter image URL" class="w-full rounded-lg text-sm border-gray-200 focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" />
                     @error('photo') <span class="text-red-500">{{ $message }}</span> @enderror
+                    <img src="{{ $photo }}" alt="Product Image" class="mt-2 rounded-lg max-h-60" />
                     </div>
                     <!-- End Col -->
                     <div class="sm:col-span-3">
