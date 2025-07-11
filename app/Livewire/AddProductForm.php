@@ -5,17 +5,13 @@ namespace App\Livewire;
 use App\Models\Category;
 use App\Models\Product;
 use Livewire\Component;
-use Livewire\Attributes\Validate;
-use Livewire\Features\SupportFileUploads\WithFileUploads;
 use Illuminate\Support\Facades\Log;
 
 class AddProductForm extends Component
 {
-    use WithFileUploads;
-
     public $currentUrl;
     public $product_name = '';
-    public $photo;
+    public $photo; // ini berupa URL dari Cloudinary
     public $product_description = '';
     public $product_price = '';
     public $category_id;
@@ -31,42 +27,29 @@ class AddProductForm extends Component
         try {
             $this->validate([
                 'product_name' => 'required',
-                'photo' => 'image|required|mimes:jpg,jpeg,png|max:1024',
+                'photo' => 'required|url', // sekarang validasi URL, bukan file image
                 'product_description' => 'required',
                 'product_price' => 'required|numeric',
                 'category_id' => 'required',
             ]);
 
-            // Simpan file ke storage/app/public/photos
-            $path = $this->photo->store('photos', 'public');
-
             $product = new Product();
             $product->name = $this->product_name;
-            $product->image = $path; // contoh: photos/namafile.jpg
+            $product->image = $this->photo; // sudah dalam bentuk URL
             $product->description = $this->product_description;
             $product->price = $this->product_price;
             $product->category_id = $this->category_id;
             $product->save();
 
             return $this->redirect('/products', navigate: true);
-
         } catch (\Exception $e) {
-            Log::error('Upload Error: '.$e->getMessage(), [
-                'photo_info' => [
-                    'exists' => isset($this->photo),
-                    'type' => gettype($this->photo),
-                    'class' => get_class($this->photo),
-                    'extension' => optional($this->photo)->getClientOriginalExtension(),
-                    'mimeType' => optional($this->photo)->getMimeType(),
-                    'size' => optional($this->photo)->getSize(),
-                    'originalName' => optional($this->photo)->getClientOriginalName(),
-                ]
+            Log::error('Upload Error: ' . $e->getMessage(), [
+                'photo_info' => $this->photo,
             ]);
 
             dd([
                 'message' => $e->getMessage(),
-                'mime' => optional($this->photo)->getMimeType(),
-                'ext' => optional($this->photo)->getClientOriginalExtension()
+                'photo' => $this->photo
             ]);
         }
     }
@@ -75,7 +58,6 @@ class AddProductForm extends Component
     {
         $current_url = url()->current();
         $explode_url = explode('/', $current_url);
-
         $this->currentUrl = $explode_url[3] . ' ' . ($explode_url[4] ?? '');
 
         return view('livewire.add-product-form')
