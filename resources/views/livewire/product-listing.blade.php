@@ -8,7 +8,7 @@
                 <livewire:item-card lazy :product_details="$product" wire:key="{{$product->id}}"/>
             @endforeach
         @else
-            <h2 class="text-2xl text-gray-300">No Product Available</h2>
+            <h2 class="text-2xl text-gray-300">Produk Tidak Tersedia</h2>
         @endif
         
     </div>

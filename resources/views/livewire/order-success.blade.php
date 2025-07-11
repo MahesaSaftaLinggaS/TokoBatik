@@ -14,7 +14,7 @@
     <h1 class="text-3xl font-bold text-gray-800">Terima kasih atas pesanan Anda!</h1>
 
     <p class="text-gray-600 text-lg">
-        Pesanan Anda telah berhasil dibuat. Kami akan segera memproses dan mengirimkannya.
+        Yeay! Pesanan kamu sudah kami terima. Kami akan segera memproses dan mengirimkannya, tunggu ya!
     </p>
 
     <a href="{{ url('/') }}"
