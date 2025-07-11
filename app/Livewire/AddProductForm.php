@@ -27,7 +27,7 @@ class AddProductForm extends Component
             'product_name' => 'required',
             'photo' => 'required|url',
             'product_description' => 'required',
-            'product_price' => 'required|numeric',
+            'product_price' => 'required|numeric|max:999999.99',
             'category_id' => 'required',
         ]);
 

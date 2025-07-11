@@ -32,7 +32,7 @@ class EditProduct extends Component
         $this->validate([
             'product_name' => 'required|string|max:255',
             'product_description' => 'required|string',
-            'product_price' => 'required|numeric',
+            'product_price' => 'required|numeric|max:999999.99',
             'category_id' => 'required|exists:categories,id',
             'photo' => 'nullable|url', // Validate as URL
         ]);
