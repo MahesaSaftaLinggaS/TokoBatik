@@ -4,12 +4,15 @@
         <div class="flex flex-col lg:flex-row gap-8">
 
             <!-- Gambar -->
-            <div class="w-full max-w-xs mx-auto lg:mx-0">
-                <img
-                    src="{{ $product->image ?? asset('images/placeholder-image.jpg') }}"
-                    alt="product-images"
-                    class="w-full h-48 md:h-56 object-cover rounded-lg">
+            <div class="w-full flex justify-center lg:justify-start lg:w-auto">
+                <div class="max-w-[280px] w-full">
+                    <img
+                        src="{{ $product->image ?? asset('images/placeholder-image.jpg') }}"
+                        alt="product-images"
+                        class="w-full h-48 md:h-56 object-cover rounded-lg">
+                </div>
             </div>
+
 
         </div>
 
