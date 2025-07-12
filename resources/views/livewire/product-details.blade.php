@@ -4,15 +4,15 @@
         <div class="flex flex-col lg:flex-row gap-8">
 
             <!-- Gambar -->
+            <!-- Gambar -->
             <div class="w-full flex justify-center lg:justify-start lg:w-auto">
-                <div class="max-w-[280px] w-full">
+                <div class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-[280px]">
                     <img
                         src="{{ $product->image ?? asset('images/placeholder-image.jpg') }}"
                         alt="product-images"
-                        class="w-full h-48 md:h-56 object-cover rounded-lg">
+                        class="w-full h-auto aspect-square object-cover rounded-lg">
                 </div>
             </div>
-
 
         </div>
 
