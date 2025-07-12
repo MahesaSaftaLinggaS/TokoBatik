@@ -5,11 +5,13 @@
       
       <!-- Gambar -->
       <div class="w-full lg:w-1/3">
-        <img 
-          src="{{ $product->image ?? asset('images/placeholder-image.jpg') }}" 
-          alt="product-images" 
-          class="rounded-lg object-cover w-full h-64 sm:h-72 md:h-80"
-        >
+        <div class="w-full aspect-[4/3] max-h-[320px] overflow-hidden rounded-lg">
+          <img 
+            src="{{ $product->image ?? asset('images/placeholder-image.jpg') }}" 
+            alt="product-images" 
+            class="w-full h-full object-cover"
+          >
+        </div>
       </div>
 
       <!-- Konten -->
