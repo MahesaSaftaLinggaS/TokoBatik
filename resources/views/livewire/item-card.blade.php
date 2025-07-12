@@ -13,9 +13,14 @@
       <h2 class="text-base font-semibold text-gray-800 line-clamp-1">{{ $product->name }}</h2>
       <p class="text-sm text-gray-600 line-clamp-2">{{ $product->description }}</p>
 
-      <div class="flex justify-between items-center text-sm mt-3">
-        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs sm:text-sm">{{ $product->category->name }}</span>
-        <span class="font-semibold text-gray-900 text-sm sm:text-base">Rp{{ number_format($product->price, 0, ',', '.') }}</span>
+      <!-- Kategori dan Harga (vertikal) -->
+      <div class="flex flex-col gap-1 text-sm mt-3">
+        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full w-fit text-xs sm:text-sm">
+          {{ $product->category->name }}
+        </span>
+        <span class="font-semibold text-gray-900 text-sm sm:text-base">
+          Rp{{ number_format($product->price, 0, ',', '.') }}
+        </span>
       </div>
 
       <!-- Tombol -->
