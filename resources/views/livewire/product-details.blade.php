@@ -6,12 +6,10 @@
             <!-- Gambar -->
             <div class="flex flex-col lg:flex-row gap-5 px-6 py-10">
                 <!-- Gambar Produk -->
-                <div class="w-full lg:w-[300px] shrink-0">
-                    <img
-                        src="{{ $product->image ?? asset('images/placeholder-image.jpg') }}"
-                        alt="product-images"
-                        class="object-cover w-full h-48 md:h-56 rounded-lg" />
-                </div>
+                <img
+                    src="{{ $product->image ?? asset('images/placeholder-image.jpg') }}"
+                    alt="product-images"
+                    class="object-cover w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-[100px] h-48 md:h-56 rounded-lg" />
 
 
             </div>
