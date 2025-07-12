@@ -8,9 +8,9 @@
                 <!-- Gambar Produk -->
                 <div class="w-full lg:w-[300px] shrink-0">
                     <img
-                        src="{{ $product->image ? Storage::url($product->image) : asset('images/placeholder-image.jpg') }}"
+                        src="{{ $product->image ?? asset('images/placeholder-image.jpg') }}"
                         alt="product-images"
-                        class="object-cover w-full h-48 md:h-56 rounded-lg">
+                        class="object-cover w-full h-48 md:h-56 rounded-lg" />
                 </div>
 
 
