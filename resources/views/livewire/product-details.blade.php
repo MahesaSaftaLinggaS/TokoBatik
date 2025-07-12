@@ -4,15 +4,16 @@
     <div class="flex flex-col lg:flex-row gap-8">
       
       <!-- Gambar -->
-      <div class="w-full lg:w-1/3">
-        <div class="w-full aspect-[4/3] max-h-[320px] overflow-hidden rounded-lg">
-          <img 
-            src="{{ $product->image ?? asset('images/placeholder-image.jpg') }}" 
-            alt="product-images" 
-            class="w-full h-full object-cover"
-          >
-        </div>
-      </div>
+<div class="w-full lg:w-1/3">
+  <div class="w-full h-48 md:h-56 overflow-hidden rounded-lg">
+    <img 
+      src="{{ $product->image ?? asset('images/placeholder-image.jpg') }}" 
+      alt="product-images" 
+      class="w-full h-full object-cover rounded-lg"
+    >
+  </div>
+</div>
+
 
       <!-- Konten -->
       <div class="flex-1">
