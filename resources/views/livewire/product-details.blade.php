@@ -9,7 +9,7 @@
                 <img
                     src="{{ $product->image ?? asset('images/placeholder-image.jpg') }}"
                     alt="product-images"
-                    class="object-cover w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-[100px] h-48 md:h-56 rounded-lg" />
+                    class="object-cover w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-[100px] h-20 md:h-20 rounded-lg" />
 
 
             </div>
